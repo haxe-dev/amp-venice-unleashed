@@ -19,4 +19,6 @@ Generic-module template for [CubeCoders AMP](https://cubecoders.com/AMP) that ru
 
 Ports: 25200/UDP (game), 7948/UDP (Harmony), 47200/TCP (RCON, e.g. Procon).
 
+Console: commands typed into the AMP console are sent to the server via RCON (`vu-wrapper.py`), e.g. `serverInfo`, `admin.say "hi" all`. Requires the admin/RCON password setting.
+
 See the official hosting docs: <https://docs.veniceunleashed.net/hosting/prereq/>

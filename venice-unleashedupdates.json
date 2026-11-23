@@ -63,6 +63,16 @@
         "SkipOnFailure": false
     },
     {
+        "UpdateStageName": "Console/RCON Bridge Download",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://raw.githubusercontent.com/haxe-dev/amp-venice-unleashed/main/vu-wrapper.py",
+        "UpdateSourceTarget": "{{$FullRootDir}}",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": true,
+        "SkipOnFailure": false
+    },
+    {
         "UpdateStageName": "Default Startup.txt Download",
         "UpdateSourcePlatform": "All",
         "UpdateSource": "FetchURL",
