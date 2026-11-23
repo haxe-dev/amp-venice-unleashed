@@ -1,0 +1,7 @@
+vars.serverName "VU Server"
+vars.serverDescription ""
+vars.gamePassword ""
+admin.password ""
+vars.maxPlayers 64
+vars.friendlyFire false
+vars.autoBalance true

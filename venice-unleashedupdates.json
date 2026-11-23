@@ -45,11 +45,39 @@
         "SkipOnFailure": true
     },
     {
+        "UpdateStageName": "VC++ 2015-2022 Redist Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://aka.ms/vs/17/release/vc_redist.x86.exe",
+        "UpdateSourceTarget": "{{$FullRootDir}}",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": true,
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "VC++ 2015-2022 Redist Install",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"export WINEPREFIX=\\\"{{$FullRootDir}}.wine\\\" WINEARCH=win32 WINEDEBUG=-all; cd venice-unleashed; xvfb-run -a wine vc_redist.x86.exe /install /quiet /norestart; wineserver -w; rm -f vc_redist.x86.exe\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Default Startup.txt Download",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://raw.githubusercontent.com/haxe-dev/amp-venice-unleashed/main/startup.default",
+        "UpdateSourceTarget": "{{$FullRootDir}}",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": true,
+        "SkipOnFailure": true
+    },
+    {
         "UpdateStageName": "Default Config Files",
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd venice-unleashed/instance/Admin && if [ ! -s MapList.txt ]; then for m in 'MP_Subway ConquestLarge0 1' 'MP_001 ConquestLarge0 1' 'MP_003 ConquestLarge0 1' 'MP_007 ConquestLarge0 1' 'XP1_001 ConquestAssaultLarge0 1'; do echo $m; done > MapList.txt; fi; [ -f ModList.txt ] || : > ModList.txt; [ -f Startup.txt ] || : > Startup.txt\"",
+        "UpdateSourceArgs": "-c \"cd venice-unleashed/instance/Admin && if [ ! -s MapList.txt ]; then for m in 'MP_Subway ConquestLarge0 1' 'MP_001 ConquestLarge0 1' 'MP_003 ConquestLarge0 1' 'MP_007 ConquestLarge0 1' 'XP1_001 ConquestAssaultLarge0 1'; do echo $m; done > MapList.txt; fi; [ -f ModList.txt ] || : > ModList.txt; if [ ! -s Startup.txt ]; then cp -f {{$FullRootDir}}startup.default Startup.txt 2>/dev/null; fi\"",
         "SkipOnFailure": false
     }
 ]
