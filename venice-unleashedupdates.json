@@ -49,7 +49,7 @@
         "UpdateSourcePlatform": "Linux",
         "UpdateSource": "Executable",
         "UpdateSourceData": "/bin/bash",
-        "UpdateSourceArgs": "-c \"cd venice-unleashed/instance/Admin && [ -f MapList.txt ] || printf 'MP_Subway ConquestLarge0 1\\\\nMP_001 ConquestLarge0 1\\\\nMP_003 ConquestLarge0 1\\\\nMP_007 ConquestLarge0 1\\\\nXP1_001 ConquestAssaultLarge0 1\\\\n' > MapList.txt; [ -f ModList.txt ] || : > ModList.txt; [ -f Startup.txt ] || : > Startup.txt\"",
+        "UpdateSourceArgs": "-c \"cd venice-unleashed/instance/Admin && if [ ! -s MapList.txt ]; then for m in 'MP_Subway ConquestLarge0 1' 'MP_001 ConquestLarge0 1' 'MP_003 ConquestLarge0 1' 'MP_007 ConquestLarge0 1' 'XP1_001 ConquestAssaultLarge0 1'; do echo $m; done > MapList.txt; fi; [ -f ModList.txt ] || : > ModList.txt; [ -f Startup.txt ] || : > Startup.txt\"",
         "SkipOnFailure": false
     }
 ]
