@@ -134,7 +134,13 @@ def console_loop(rcon):
             continue
         try:
             resp = rcon.send(words)
-            log(" ".join(shlex.quote(w) if (" " in w or not w) else w for w in resp))
+            if len(resp) > 1 and any(" " in w for w in resp[1:]):
+                # Mod commands answer with readable lines: print one per line.
+                log(resp[0])
+                for w in resp[1:]:
+                    log("  " + w)
+            else:
+                log(" ".join(shlex.quote(w) if (" " in w or not w) else w for w in resp))
         except Exception as e:  # keep the console alive whatever happens
             log(f"error: {e}")
 
