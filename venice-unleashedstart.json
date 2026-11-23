@@ -1,0 +1,26 @@
+[
+    {
+        "UpdateStageName": "Check Game Files",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"test -f venice-unleashed/bf3/bf3.exe || { echo 'BF3 game files missing: upload your full Battlefield 3 installation into venice-unleashed/bf3/ (bf3.exe must be directly inside).'; exit 1; }\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Check Server Key",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"test -f venice-unleashed/instance/server.key || { echo 'server.key missing: create one at https://veniceunleashed.net/keys and upload it to venice-unleashed/instance/server.key'; exit 1; }\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Activate BF3",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"export WINEPREFIX=\\\"{{$FullRootDir}}.wine\\\" WINEARCH=win32 WINEDEBUG=-all; cd venice-unleashed; if [ -n \\\"{{EaToken}}\\\" ] && [ ! -f .activated ]; then wine client/vu.com -gamepath \\\"{{$FullBaseDir}}bf3\\\" -activate -ea_token \\\"{{EaToken}}\\\" && touch .activated; wineserver -w; fi\"",
+        "SkipOnFailure": false
+    }
+]

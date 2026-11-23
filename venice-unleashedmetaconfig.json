@@ -1,0 +1,18 @@
+[
+    {
+        "ConfigFile": "instance/Admin/Startup.txt",
+        "AutoMap": true,
+        "Importable": true,
+        "ConfigType": "kvp",
+        "ConfigFormat": "{0} \"{1}\"",
+        "ConfigFormatRegex": "^(?<key>[A-Za-z]+\\.[A-Za-z]+) \"(?<value>.*?)\"\\s*$"
+    },
+    {
+        "ConfigFile": "instance/Admin/Startup.txt",
+        "AutoMap": true,
+        "Importable": true,
+        "ConfigType": "kvp",
+        "ConfigFormat": "{0} {1}",
+        "ConfigFormatRegex": "^(?<key>[A-Za-z]+\\.[A-Za-z]+) (?<value>[^\"\\s]+)\\s*$"
+    }
+]

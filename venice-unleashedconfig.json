@@ -1,0 +1,162 @@
+[
+    {
+        "DisplayName": "Server Name",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Name shown in the server browser",
+        "Keywords": "",
+        "FieldName": "vars.serverName",
+        "InputType": "text",
+        "ParamFieldName": "vars.serverName",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "My VU Server",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Server Description",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Description shown in the server browser",
+        "Keywords": "",
+        "FieldName": "vars.serverDescription",
+        "InputType": "text",
+        "ParamFieldName": "vars.serverDescription",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "Game Password",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Password players need to join (empty = public)",
+        "Keywords": "",
+        "FieldName": "vars.gamePassword",
+        "InputType": "password",
+        "ParamFieldName": "vars.gamePassword",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "RCON / Admin Password",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Password for remote administration (Procon etc.) on the RCON port. Required for RCON to work",
+        "Keywords": "",
+        "FieldName": "admin.password",
+        "InputType": "password",
+        "ParamFieldName": "admin.password",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "EnumValues": {},
+        "ExcludeFromImport": true
+    },
+    {
+        "DisplayName": "Max Players",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Server:dns:1",
+        "Description": "Player slots. Also passed as -maxPlayers on the command line",
+        "Keywords": "",
+        "FieldName": "MaxPlayers",
+        "InputType": "number",
+        "ParamFieldName": "vars.maxPlayers",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "64",
+        "EnumValues": {},
+        "MinValue": "1",
+        "MaxValue": "128"
+    },
+    {
+        "DisplayName": "Friendly Fire",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Gameplay:sports_esports:2",
+        "Description": "Enable friendly fire",
+        "Keywords": "",
+        "FieldName": "vars.friendlyFire",
+        "InputType": "checkbox",
+        "ParamFieldName": "vars.friendlyFire",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "false",
+        "EnumValues": {
+            "False": "false",
+            "True": "true"
+        }
+    },
+    {
+        "DisplayName": "Auto Balance",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Gameplay:sports_esports:2",
+        "Description": "Automatically balance teams",
+        "Keywords": "",
+        "FieldName": "vars.autoBalance",
+        "InputType": "checkbox",
+        "ParamFieldName": "vars.autoBalance",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "true",
+        "EnumValues": {
+            "False": "false",
+            "True": "true"
+        }
+    },
+    {
+        "DisplayName": "Tick Rate",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Launch:rocket_launch:3",
+        "Description": "Server simulation frequency. Higher needs more CPU",
+        "Keywords": "",
+        "FieldName": "TickRate",
+        "InputType": "enum",
+        "ParamFieldName": "TickRate",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "EnumValues": {
+            "": "30 Hz (default)",
+            "-high60": "60 Hz",
+            "-high120": "120 Hz"
+        }
+    },
+    {
+        "DisplayName": "Unlisted",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Launch:rocket_launch:3",
+        "Description": "Hide the server from the public server browser",
+        "Keywords": "",
+        "FieldName": "Unlisted",
+        "InputType": "checkbox",
+        "ParamFieldName": "Unlisted",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "EnumValues": {
+            "False": "",
+            "True": "-unlisted"
+        }
+    },
+    {
+        "DisplayName": "Extra Arguments",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Launch:rocket_launch:3",
+        "Description": "Additional vu.com arguments, e.g. -highResTerrain -skipChecksum",
+        "Keywords": "",
+        "FieldName": "ExtraArgs",
+        "InputType": "text",
+        "ParamFieldName": "ExtraArgs",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "EnumValues": {}
+    },
+    {
+        "DisplayName": "EA Activation Token",
+        "Category": "Venice Unleashed:stadia_controller",
+        "Subcategory": "Activation:key:4",
+        "Description": "One-time token to activate BF3 in this instance's Wine prefix. Create it on a PC with the EA app: vu.exe -activate -lsx, copy the token between the single quotes. Used on next start, then remembered via .activated marker (delete that file to re-activate)",
+        "Keywords": "",
+        "FieldName": "EaToken",
+        "InputType": "password",
+        "ParamFieldName": "EaToken",
+        "IncludeInCommandLine": false,
+        "DefaultValue": "",
+        "EnumValues": {},
+        "ExcludeFromImport": true
+    }
+]

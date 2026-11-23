@@ -1,0 +1,55 @@
+[
+    {
+        "UpdateStageName": "Create Directories",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd venice-unleashed && mkdir -p client bf3 instance/Admin instance/logs\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Venice Unleashed Client Download",
+        "UpdateSourcePlatform": "All",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://veniceunleashed.net/files/vu.zip",
+        "UpdateSourceTarget": "{{$FullBaseDir}}client",
+        "UnzipUpdateSource": true,
+        "OverwriteExistingFiles": true,
+        "DeleteAfterExtract": true,
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Initialise Wine Prefix",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"export WINEPREFIX=\\\"{{$FullRootDir}}.wine\\\" WINEARCH=win32 WINEDEBUG=-all; if [ ! -f \\\"$WINEPREFIX/system.reg\\\" ]; then wineboot --init; wineserver -w; fi\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "VC++ 2008 Redist Download",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "FetchURL",
+        "UpdateSourceData": "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe",
+        "UpdateSourceTarget": "{{$FullRootDir}}",
+        "UnzipUpdateSource": false,
+        "OverwriteExistingFiles": true,
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "VC++ 2008 Redist Install",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"export WINEPREFIX=\\\"{{$FullRootDir}}.wine\\\" WINEARCH=win32 WINEDEBUG=-all; cd venice-unleashed; if command -v xvfb-run >/dev/null; then xvfb-run -a wine vcredist_x86.exe /q; else wine vcredist_x86.exe /q; fi; wineserver -w; rm -f vcredist_x86.exe\"",
+        "SkipOnFailure": true
+    },
+    {
+        "UpdateStageName": "Default Config Files",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"cd venice-unleashed/instance/Admin && [ -f MapList.txt ] || printf 'MP_Subway ConquestLarge0 1\\\\nMP_001 ConquestLarge0 1\\\\nMP_003 ConquestLarge0 1\\\\nMP_007 ConquestLarge0 1\\\\nXP1_001 ConquestAssaultLarge0 1\\\\n' > MapList.txt; [ -f ModList.txt ] || : > ModList.txt; [ -f Startup.txt ] || : > Startup.txt\"",
+        "SkipOnFailure": false
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "Protocol": "UDP",
+        "Port": 25200,
+        "Ref": "GamePort",
+        "Name": "Game Port",
+        "Description": "Frostbite game traffic (-listen)"
+    },
+    {
+        "Protocol": "UDP",
+        "Port": 7948,
+        "Ref": "HarmonyPort",
+        "Name": "Harmony Port",
+        "Description": "Venice Unleashed networking layer (-mHarmonyPort)"
+    },
+    {
+        "Protocol": "TCP",
+        "Port": 47200,
+        "Ref": "RconPort",
+        "Name": "RCON Port",
+        "Description": "BF3 remote administration protocol, e.g. for Procon (-RemoteAdminPort)"
+    }
+]
